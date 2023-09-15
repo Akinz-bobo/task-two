@@ -9,32 +9,41 @@ and then run
 npm start to launch the app.
 
 It contains the following requests:
-Create User: https://task-two-2zmv.onrender.com/api/
-Get All Users: https://task-two-2zmv.onrender.com/api/
-Get A User: https://task-two-2zmv.onrender.com/api/user_id
-Update User: https://task-two-2zmv.onrender.com/api/user_id
-Delete user: https://task-two-2zmv.onrender.com/api/user_id 
+   Action          |              Endpoints
+-------------------|-----------------------------------------
+    Create User:   | https://task-two-2zmv.onrender.com/api/
+    Get All Users: | https://task-two-2zmv.onrender.com/api/
+    Get A User:    | https://task-two-2zmv.onrender.com/api/user_id
+    Update User:   | https://task-two-2zmv.onrender.com/api/user_id
+    Delete user:   | https://task-two-2zmv.onrender.com/api/user_id 
 
 #Create User:
 Endpoint: https://task-two-2zmv.onrender.com/api/
 
 Request:
+```json
 {
 "name": "John Doe",
 "email": "john.doe@yahoo.com",
 "age":30
 }
+```
 Method: post
 
-e.g: axios.post("https://task-two-2zmv.onrender.com/api/",{
+e.g: axios.post("https://task-two-2zmv.onrender.com/api/",
+```json
+{
 "name": "John Doe",
 "email": "john.doe@yahoo.com",
 "age":30
-})
+}
+```
+)
 
 Success code: 201 created
 
 Response:
+```json
 {
     "data": {
         "name": "John Doe",
@@ -46,6 +55,7 @@ Response:
         "__v": 0
     }
 }
+```
 
 
 #Get all users:
@@ -55,6 +65,7 @@ It accepts query parameter and filters
 e.g get all users without a parameter
 axios.get("https://task-two-2zmv.onrender.com/api/")
 Response:
+```json
 {
     "data": [
         {
@@ -77,12 +88,13 @@ Response:
         }
     ]
 }
-
+```
 
 
 get all users with specific age greater than 30
 axios.get("https://task-two-2zmv.onrender.com/api/?age[gte]=30")
 Response:
+```json
 {
     "data": [
         {
@@ -97,20 +109,24 @@ Response:
     ]
 }
 
-
+```
 #Update user information
 This require the specific id of the user to be updated and a parameter
 and also the body should contain the field to update and the new value.
 
 Endpoint: https://task-two-2zmv.onrender.com/api/user_id
 Regest:
+```json
 {
 
 "age":33
 }
+```
+
 Method: patch
 Success code: 200
 Response:
+```json
 {
     "data": {
         "name": "John Doe",
@@ -122,11 +138,14 @@ Response:
         "__v": 0
     }
 }
+```
 
 #Delete user
 Endpoint: https://task-two-2zmv.onrender.com/api/user_id
 Method: delete
 Response: 
+```json
 {
     "message": "User deleted successfully!"
 }
+```
