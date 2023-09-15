@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^20.6.0",
+    "dotenv": "^16.3.1",
     "joi": "^17.10.1",
     "nodemon": "^3.0.1"
   }
