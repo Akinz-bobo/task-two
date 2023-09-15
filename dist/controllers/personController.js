@@ -49,7 +49,8 @@ const deleteUser = function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = req.params.id;
         try {
-            const user = yield Person_1.default.findByIdAndDelete(id);
+            yield Person_1.default.findByIdAndDelete(id);
+            res.status(200).json({ message: "User deleted successfully!" });
         }
         catch (error) {
             res.status(500).json({ error });
@@ -63,7 +64,7 @@ const updateUser = function (req, res, next) {
         const id = req.params.id;
         // const data = await PersonValidator.validateAsync(req.body);
         try {
-            const user = yield Person_1.default.findByIdAndUpdate(id, req.body);
+            const user = yield Person_1.default.findByIdAndUpdate(id, req.body, { new: true });
             res.status(200).json({ data: user });
         }
         catch (error) {

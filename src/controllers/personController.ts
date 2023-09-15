@@ -30,7 +30,8 @@ export const getUser = async function(req:Request,res:Response,next:NextFunction
 export const deleteUser = async function(req:Request,res:Response,next:NextFunction){
     const id= req.params.id;
     try {
-        const user = await Person.findByIdAndDelete(id);
+        await Person.findByIdAndDelete(id);
+        res.status(200).json({message:"User deleted successfully!"})
     } catch (error) {
         res.status(500).json({error});
         next(error);
@@ -41,7 +42,7 @@ export const updateUser = async function(req:Request,res:Response,next:NextFunct
     const id= req.params.id;
     // const data = await PersonValidator.validateAsync(req.body);
     try {
-        const user = await Person.findByIdAndUpdate(id,req.body);
+        const user = await Person.findByIdAndUpdate(id,req.body,{new:true});
         res.status(200).json({ data:user });
     } catch (error) {
         res.status(500).json({error});
